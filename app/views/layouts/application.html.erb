@@ -8,6 +8,13 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+    <% flash.each do |key, value|%>
+      <%= content_tag(:div, value, class: "#{key} alert alert-danger col-6 mt-3 position-fixed") %>
+    <% end%>
+    </div>
+  </div>
 
   <body>
     <%= yield %>

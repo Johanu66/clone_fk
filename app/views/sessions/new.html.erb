@@ -1,29 +1,11 @@
 <div class="container content_main justify-content-around d-flex flex-column jus">
-    <% if @user.errors.any? %>
-    <div class="row error_message">
-        <div class="col-12">
-            <div id="error_explanation">
-            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-            <ul>
-            <% @user.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-            </ul>
-            </div>
-        </div>
-    </div>
-    <% end %>
     <div class="row">
         <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center">
             <%= image_tag("fk.svg", :alt => "logo", :width => "400") %>
             <div class="text_after_logo text-center">Avec Facebook, partagez et restez en contact avec votre entourage.</div>
         </div>
         <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center">
-            <%= form_with(model: @user, local: true,url: new_user_path, class: "form") do |form| %>
-                <div class="field my-3">
-                    <%= form.text_field :name, placeholder: "Nom" %>
-                </div>
+            <%= form_with(model: @user, scope: :session, local: true,url: create_session_path, class: "form") do |form| %>
 
                 <div class="field my-3">
                     <%= form.text_field :email, placeholder: "Adresse email" %>
@@ -34,10 +16,10 @@
                 </div>
 
                 <div class="actions my-3">
-                    <%= form.submit "Créer un compte", class: "btn btn-primary" %>
+                    <%= form.submit "Se connecter", class: "btn btn-primary" %>
                 </div>
                 <hr>
-                <%= link_to "J'ai déjà un compte", new_session_path, class: "btn btn-primary text-white my-3 yet_a_compte" %>
+                <%= link_to "Créer un compte", new_user_path, class: "btn btn-primary text-white my-3 yet_a_compte" %>
             <% end %>
             <div>Créer une Page pour une célébrité, un groupe ou une entreprise.</div>
         </div>
