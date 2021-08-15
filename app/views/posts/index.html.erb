@@ -1,33 +1,23 @@
-<h1>Posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Photo</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.user.name %></td>
-        <td><%= post.title %></td>
-        <td><%= post.content %></td>
-        <td><%=  image_tag(post.photo.url, :width => "1000")  if post.photo  &&  post.photo.url %></td>
-        <td><%= link_to 'Show', post %></td>
-        <% if post.user_id == current_user.id %>
-          <td><%= link_to 'Edit', edit_post_path(post) %></td>
-          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+<div class="d-flex justify-content-between">
+  <h1>Posts</h1>
+  <div>
+    <%= link_to 'Nouveau Post', new_post_path, class: "btn btn-primary text-white" %>
+  </div>
+</div>
+<% @posts.each do |post| %>
+  <div class="card my-5">
+    <h1 class="card-header"><%= post.user.name %></h1>
+    <div class="card-body">
+      <h5 class=""><%= post.title %></h5>
+      <div class="my-3"><%= post.content %></div>
+      <div class=""><%=  image_tag(post.photo.url, :style => "max-width: 500px;width: 70%;")  if post.photo  &&  post.photo.url %></div>
+    </div>
+    <div class="card-footer d-flex <% if post.user_id == current_user.id %> justify-content-around <% end %>">
+      <div><%= link_to 'Show', post, class: "btn btn-primary text-white" %></div>
+      <% if post.user_id == current_user.id %>
+        <div><%= link_to 'Edit', edit_post_path(post), class: "btn btn-primary text-white"  %></div>
+        <div><%= link_to 'Destroy', post, class: "btn btn-primary text-white", method: :delete, data: { confirm: 'Are you sure?' } %></div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

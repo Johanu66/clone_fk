@@ -1,24 +1,15 @@
-<p>
-  <strong>User:</strong>
-  <%= @post.user.name %>
-</p>
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
-
-<p>
-  <strong>Photo:</strong>
-  <%=  image_tag(@post.photo.url, :width => "1000")  if @post.photo  &&  @post.photo.url %>
-</p>
-
-<% if @post.user_id == current_user.id %>
-  <td><%= link_to 'Edit', edit_post_path(@post) %></td> |
-  <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-<% end %> |
-<%= link_to 'Back', posts_path %>
+<div class="card my-5">
+  <h1 class="card-header"><%= @post.user.name %></h1>
+  <div class="card-body">
+    <h5 class=""><%= @post.title %></h5>
+    <div class="my-3"><%= @post.content %></div>
+    <div class=""><%=  image_tag(@post.photo.url, :width => "500")  if @post.photo  &&  @post.photo.url %></div>
+  </div>
+  <div class="card-footer d-flex <% if @post.user_id == current_user.id %> justify-content-around <% end %>">
+    <div><%= link_to 'Back', posts_path, class: "btn btn-primary text-white" %></div>
+    <% if @post.user_id == current_user.id %>
+      <div><%= link_to 'Edit', edit_post_path(@post), class: "btn btn-primary text-white"  %></div>
+      <div><%= link_to 'Destroy', @post, class: "btn btn-primary text-white", method: :delete, data: { confirm: 'Are you sure?' } %></div>
+    <% end %>
+  </div>
+</div>
