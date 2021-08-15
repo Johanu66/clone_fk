@@ -16,7 +16,37 @@
     </div>
   </div>
 
-  <body>
-    <%= yield %>
+  <body class="d-flex flex-column">
+    <% if current_user %>
+      <header class="header d-flex justify-content-between p-3">
+        <div>
+          <%= image_tag("fk.png", :alt => "logo", :width => "50") %>
+          <input type="text" class="d-none d-md-inline" placeholder="Rechercher sur Facebook">
+        </div>
+        <div>
+          <%= image_tag("default.jpg", :alt => "logo", :width => "50", :style => "border-radius: 50%;") %>
+          <%= current_user.name %>
+        </div>
+          
+      </header>
+    <% end %>
+    <div class="flex-grow-1 d-flex flex-column flex-md-row">
+      <% if current_user %>
+      <div class="menu d-flex justify-content-between d-md-block">
+        <div class="p-3 d-flex align-items-center">
+          <div><%= image_tag("default.jpg", :alt => "logo", :width => "50", :style => "border-radius: 50%;") %></div>
+          <h4><%= current_user.name %></h4>
+        </div>
+        <ul class="list-unstyled">
+          <li><%= link_to 'Tous les posts', posts_path, class: "menu_item p-3" %></li>
+          <li><%= link_to 'Ajouter un post', new_post_path, class: "menu_item p-3" %></li>
+          <li><%= link_to 'Mes posts', new_post_path, class: "menu_item p-3" %></li>
+        </ul>
+      </div>
+      <% end %>
+      <div class="flex-grow-1">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

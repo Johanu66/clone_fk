@@ -1,0 +1,12 @@
+<h3 class="m-5">Les informations suivantes doivent être publiée.</h3>
+<%= form_with(model: @post, local: true) do |form| %>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :content %>
+  <%= form.hidden_field :photo %>
+  <%= form.hidden_field :user_id %>
+  <p class="m-5" style="font-size: 1.2em;">Titre: <%= @post.title %></p>
+  <p class="m-5" style="font-size: 1.2em;">Contenu: <%= @post.content %></p>
+  <p class="m-5" style="font-size: 1.2em;">Photo: <%=  image_tag(@post.photo.url, :width => "1000")  if @post.photo  &&  @post.photo.url %></p>
+  <%= form.submit  "Publier", class: "btn btn-primary text-white m-5" %>
+  <%= link_to "Annuler", new_post_path, class: "btn btn-danger text-white m-5" %>
+<% end %>
