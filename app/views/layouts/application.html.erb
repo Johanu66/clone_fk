@@ -40,7 +40,7 @@
         <ul class="list-unstyled">
           <li><%= link_to 'Tous les posts', posts_path, class: "menu_item p-3" %></li>
           <li><%= link_to 'Ajouter un post', new_post_path, class: "menu_item p-3" %></li>
-          <li><%= link_to 'Mes posts', new_post_path, class: "menu_item p-3" %></li>
+          <li><%= link_to 'Se déconnecter', destroy_session_path, class: "menu_item p-3" %></li>
         </ul>
       </div>
       <% end %>

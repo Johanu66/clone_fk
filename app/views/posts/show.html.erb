@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>User:</strong>
+  <%= @post.user.name %>
+</p>
+<p>
   <strong>Title:</strong>
   <%= @post.title %>
 </p>
@@ -11,8 +15,8 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @post.user %>
+  <strong>Photo:</strong>
+  <%=  image_tag(@post.photo.url, :width => "1000")  if @post.photo  &&  @post.photo.url %>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |

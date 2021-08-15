@@ -2,7 +2,8 @@
 <%= form_with(model: @post, local: true) do |form| %>
   <%= form.hidden_field :title %>
   <%= form.hidden_field :content %>
-  <%= form.hidden_field :photo %>
+  <%= form.hidden_field :photo%>
+  <%= form.hidden_field :photo_cache %>
   <%= form.hidden_field :user_id %>
   <p class="m-5" style="font-size: 1.2em;">Titre: <%= @post.title %></p>
   <p class="m-5" style="font-size: 1.2em;">Contenu: <%= @post.content %></p>
