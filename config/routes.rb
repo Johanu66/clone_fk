@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :posts
+  get '/', to: 'posts#index'
   post '/posts/new', to: 'posts#confirm', as: 'confirm_post'
   post '/users/new', to: 'users#create'
   resources :users
