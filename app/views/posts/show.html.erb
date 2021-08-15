@@ -19,5 +19,8 @@
   <%=  image_tag(@post.photo.url, :width => "1000")  if @post.photo  &&  @post.photo.url %>
 </p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
+<% if @post.user_id == current_user.id %>
+  <td><%= link_to 'Edit', edit_post_path(@post) %></td> |
+  <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% end %> |
 <%= link_to 'Back', posts_path %>
