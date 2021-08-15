@@ -37,3 +37,4 @@ gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
 
 gem  'mimemagic'
+gem 'mini_racer'
